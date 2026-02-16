@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login y Registro · Biblioteca</title>
+    <!-- Tailwind CSS via CDN + Font Awesome -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .form-input:focus {
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans antialiased text-gray-800 min-h-screen flex flex-col">
+
+    <!-- Contenedor principal que empuja el footer hacia abajo -->
+    <main class="flex-grow flex items-center justify-center p-4">
+        <div class="max-w-6xl w-full grid md:grid-cols-2 gap-8 items-start py-8">
+            
+            <!-- ========== FORMULARIO DE LOGIN ========== -->
+            <section class="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+                <div class="text-center mb-8">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-indigo-100 rounded-full text-indigo-600 mb-4">
+                        <i class="fas fa-sign-in-alt text-2xl"></i>
+                    </div>
+                    <h2 class="text-3xl font-bold text-gray-800">Bienvenido</h2>
+                    <p class="text-gray-500 mt-2">Accede a tu cuenta de biblioteca</p>
+                </div>
+
+                <!-- Formulario de login -->
+                <form class="space-y-6" action="#" method="post">
+                    <!-- Email -->
+                    <div>
+                        <label for="login-email" class="block text-sm font-medium text-gray-700 mb-1.5">
+                            <i class="far fa-envelope mr-2 text-indigo-500"></i>Email
+                        </label>
+                        <input type="email" id="login-email" name="email" required 
+                               class="w-full px-5 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all"
+                               placeholder="tu@email.com">
+                    </div>
+
+                    <!-- Password -->
+                    <div>
+                        <label for="login-password" class="block text-sm font-medium text-gray-700 mb-1.5">
+                            <i class="fas fa-lock mr-2 text-indigo-500"></i>Contraseña
+                        </label>
+                        <input type="password" id="login-password" name="password" required 
+                               class="w-full px-5 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all"
+                               placeholder="••••••••">
+                    </div>
+
+                    <!-- Recordar y olvidé contraseña -->
+                    <div class="flex items-center justify-between text-sm">
+                        <label class="flex items-center gap-2 text-gray-600">
+                            <input type="checkbox" class="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                            Recordarme
+                        </label>
+                        <a href="#" class="text-indigo-600 hover:text-indigo-800 hover:underline">¿Olvidaste tu contraseña?</a>
+                    </div>
+
+                    <!-- Botón de envío -->
+                    <button type="submit" 
+                            class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-4 rounded-xl transition duration-200 shadow-md hover:shadow-lg flex items-center justify-center gap-2">
+                        <i class="fas fa-arrow-right-to-bracket"></i> Iniciar sesión
+                    </button>
+                </form>
+
+                <!-- Enlace a registro -->
+                <p class="text-center text-gray-500 text-sm mt-6">
+                    ¿No tienes cuenta? 
+                    <a href="#registro" class="text-indigo-600 font-medium hover:underline">Regístrate aquí</a>
+                </p>
+            </section>
+
+            <!-- ========== FORMULARIO DE REGISTRO ========== -->
+            <section id="registro" class="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+                <div class="text-center mb-8">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-emerald-100 rounded-full text-emerald-600 mb-4">
+                        <i class="fas fa-user-plus text-2xl"></i>
+                    </div>
+                    <h2 class="text-3xl font-bold text-gray-800">Crear cuenta</h2>
+                    <p class="text-gray-500 mt-2">Hazte socio de la biblioteca</p>
+                </div>
+
+                <!-- Formulario de registro -->
+                <form class="space-y-5" action="#" method="post">
+                    <!-- Fila nombre y apellido -->
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="nombre" class="block text-sm font-medium text-gray-700 mb-1.5">
+                                <i class="fas fa-user mr-2 text-emerald-500"></i>Nombre
+                            </label>
+                            <input type="text" id="nombre" name="nombre" required 
+                                   class="w-full px-5 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 transition-all"
+                                   placeholder="María">
+                        </div>
+                        <div>
+                            <label for="apellido" class="block text-sm font-medium text-gray-700 mb-1.5">
+                                <i class="fas fa-user mr-2 text-emerald-500"></i>Apellido
+                            </label>
+                            <input type="text" id="apellido" name="apellido" required 
+                                   class="w-full px-5 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 transition-all"
+                                   placeholder="González">
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div>
+                        <label for="registro-email" class="block text-sm font-medium text-gray-700 mb-1.5">
+                            <i class="far fa-envelope mr-2 text-emerald-500"></i>Email
+                        </label>
+                        <input type="email" id="registro-email" name="email" required 
+                               class="w-full px-5 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 transition-all"
+                               placeholder="tu@email.com">
+                    </div>
+
+                    <!-- Password -->
+                    <div>
+                        <label for="registro-password" class="block text-sm font-medium text-gray-700 mb-1.5">
+                            <i class="fas fa-lock mr-2 text-emerald-500"></i>Contraseña
+                        </label>
+                        <input type="password" id="registro-password" name="password" required 
+                               class="w-full px-5 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 transition-all"
+                               placeholder="Mínimo 8 caracteres">
+                    </div>
+
+                    <!-- Repetir password -->
+                    <div>
+                        <label for="repetir-password" class="block text-sm font-medium text-gray-700 mb-1.5">
+                            <i class="fas fa-lock mr-2 text-emerald-500"></i>Repetir contraseña
+                        </label>
+                        <input type="password" id="repetir-password" name="repetir_password" required 
+                               class="w-full px-5 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 transition-all"
+                               placeholder="••••••••">
+                    </div>
+
+                    <!-- Términos y condiciones -->
+                    <div class="flex items-start gap-3 text-sm">
+                        <input type="checkbox" id="terminos" required class="mt-1 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500">
+                        <label for="terminos" class="text-gray-600">
+                            Acepto los <a href="#" class="text-emerald-600 hover:underline">términos y condiciones</a> y la 
+                            <a href="#" class="text-emerald-600 hover:underline">política de privacidad</a>.
+                        </label>
+                    </div>
+
+                    <!-- Botón de registro -->
+                    <button type="submit" 
+                            class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 px-4 rounded-xl transition duration-200 shadow-md hover:shadow-lg flex items-center justify-center gap-2">
+                        <i class="fas fa-user-check"></i> Crear cuenta
+                    </button>
+                </form>
+
+                <!-- Enlace a login -->
+                <p class="text-center text-gray-500 text-sm mt-6">
+                    ¿Ya tienes cuenta? 
+                    <a href="#" class="text-emerald-600 font-medium hover:underline">Inicia sesión</a>
+                </p>
+            </section>
+        </div>
+    </main>
+
+    <!-- ========== FOOTER (PIE DE PÁGINA) ========== -->
+    <footer class="bg-gray-900 text-gray-300 py-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Col 1: info biblioteca -->
+                <div>
+                    <div class="flex items-center space-x-2 text-white mb-4">
+                        <i class="fas fa-book-open text-indigo-400 text-xl"></i>
+                        <span class="font-bold text-lg">Biblioteca Abierta</span>
+                    </div>
+                    <p class="text-sm text-gray-400">Calle del Saber 123, Centro. Horario: Lun-Vie 9:00-20:00, Sáb 10:00-18:00</p>
+                </div>
+                <!-- Col 2: enlaces rápidos -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Enlaces</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-indigo-300 transition">Inicio</a></li>
+                        <li><a href="#" class="hover:text-indigo-300 transition">Catálogo en línea</a></li>
+                        <li><a href="#" class="hover:text-indigo-300 transition">Hazte socio</a></li>
+                        <li><a href="#" class="hover:text-indigo-300 transition">Preguntas frecuentes</a></li>
+                    </ul>
+                </div>
+                <!-- Col 3: contacto -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Contacto</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-center gap-2"><i class="fas fa-phone w-4 text-indigo-400"></i> 555-123-4567</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-envelope w-4 text-indigo-400"></i> info@bibliotecaabierta.org</li>
+                        <li class="flex items-center gap-2"><i class="fab fa-twitter w-4 text-indigo-400"></i> @biblio_abierta</li>
+                    </ul>
+                </div>
+                <!-- Col 4: newsletter -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Novedades</h4>
+                    <p class="text-sm text-gray-400 mb-2">Suscríbete a nuestro boletín</p>
+                    <form class="flex">
+                        <input type="email" placeholder="tu@email.com" class="px-3 py-2 text-sm rounded-l-lg w-full bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-1 focus:ring-indigo-500">
+                        <button class="bg-indigo-600 hover:bg-indigo-700 px-4 rounded-r-lg text-white"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-6 text-center text-xs text-gray-500">
+                <p>© 2026 Biblioteca Abierta. Todos los derechos reservados.</p>
+                <p class="mt-1">Diseño con Tailwind CSS · Formularios responsivos</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Nota: Los formularios son solo maquetación, no incluyen lógica JavaScript -->
+</body>
+</html>

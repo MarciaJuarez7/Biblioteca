@@ -48,7 +48,7 @@
                     <a href="#" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors">Catálogo</a>
                     <a href="#" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors">Servicios</a>
                     <a href="#" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors">Contacto</a>
-                    <a href="#" class="bg-indigo-600 text-white px-5 py-2 rounded-full hover:bg-indigo-700 transition shadow-sm flex items-center gap-2">
+                    <a href="{{ route('login') }}" class="bg-indigo-600 text-white px-5 py-2 rounded-full hover:bg-indigo-700 transition shadow-sm flex items-center gap-2">
                         <i class="fas fa-sign-in-alt"></i> Login
                     </a>
                 </nav>

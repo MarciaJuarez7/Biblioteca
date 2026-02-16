@@ -3,123 +3,351 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Biblioteca - Panel de Control</title>
+    <title>Panel de Administración · Biblioteca</title>
+    <!-- Tailwind via CDN + capa base para transiciones suaves -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Font Awesome (iconos hamburguesa y decorativos) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* transición para el sidebar mobile */
+        .sidebar-transition {
+            transition: transform 0.3s ease-in-out;
+        }
+        /* ocultar scroll horizontal en móvil */
+        body { overflow-x: hidden; }
+    </style>
 </head>
-<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+<body class="min-h-screen flex flex-col bg-gray-50 text-gray-800 font-sans antialiased">
 
-    <header class="bg-blue-800 text-white shadow-lg fixed w-full z-50">
-        <div class="container mx-auto flex items-center justify-between px-6 py-3">
-            <div class="flex items-center">
-                <button id="mobile-menu-button" class="mr-4 lg:hidden focus:outline-none">
-                    <i class="fas fa-bars text-2xl"></i>
-                </button>
-                <span class="text-xl font-bold uppercase tracking-wider">BiblioTech</span>
+    <!-- ========== HEADER (semántico) con menú superior ========== -->
+    <header class="bg-indigo-700 text-white shadow-md sticky top-0 z-30">
+        <div class="px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo / título biblioteca -->
+                <div class="flex items-center space-x-3">
+                    <!-- botón menú hamburguesa (visible solo móvil) -->
+                    <button id="menuBtn" class="lg:hidden p-2 rounded-md text-indigo-100 hover:text-white hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-white" aria-label="Abrir menú">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                    <i class="fas fa-book-open text-2xl hidden sm:block"></i>
+                    <span class="font-semibold text-xl tracking-tight">Biblioteca Central</span>
+                </div>
+
+                <!-- Menú de navegación superior (header) – visible siempre en desktop, oculto en móvil reemplazado por hamburguesa -->
+                <nav class="hidden md:flex items-center space-x-1 lg:space-x-2" aria-label="Menú principal">
+                    <a href="#" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-600 transition flex items-center gap-1.5" aria-current="page"><i class="fas fa-home"></i> Inicio</a>
+                    <a href="#" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-600 transition flex items-center gap-1.5"><i class="fas fa-users"></i> Usuarios</a>
+                    <a href="#" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-600 transition flex items-center gap-1.5"><i class="fas fa-book"></i> Libros</a>
+                    <a href="#" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-600 transition flex items-center gap-1.5"><i class="fas fa-hand-holding-heart"></i> Préstamos</a>
+                    <a href="#" class="ml-2 px-3 py-2 rounded-md text-sm font-medium bg-indigo-800 hover:bg-indigo-900 transition flex items-center gap-1.5"><i class="fas fa-sign-out-alt"></i> Salir</a>
+                </nav>
+
+                <!-- Versión móvil del menú superior (compacto, solo íconos) visible en extra pequeño -->
+                <div class="flex md:hidden items-center space-x-1">
+                    <a href="#" class="p-2 rounded-full hover:bg-indigo-600" aria-label="Inicio"><i class="fas fa-home"></i></a>
+                    <a href="#" class="p-2 rounded-full hover:bg-indigo-600" aria-label="Usuarios"><i class="fas fa-users"></i></a>
+                    <a href="#" class="p-2 rounded-full hover:bg-indigo-600" aria-label="Libros"><i class="fas fa-book"></i></a>
+                    <a href="#" class="p-2 rounded-full hover:bg-indigo-600" aria-label="Préstamos"><i class="fas fa-hand-holding-heart"></i></a>
+                    <a href="#" class="p-2 rounded-full hover:bg-indigo-800" aria-label="Salir"><i class="fas fa-sign-out-alt"></i></a>
+                </div>
             </div>
-            
-            <nav class="hidden md:flex space-x-6">
-                <a href="#" class="hover:text-blue-200 transition">Inicio</a>
-                <a href="#" class="hover:text-blue-200 transition">Usuarios</a>
-                <a href="#" class="hover:text-blue-200 transition">Libros</a>
-                <a href="#" class="hover:text-blue-200 transition">Préstamos</a>
-                <a href="#" class="hover:text-blue-200 transition text-red-300">Salir</a>
-            </nav>
         </div>
     </header>
 
-    <div class="flex pt-16">
-        <aside id="sidebar" class="fixed lg:static inset-y-0 left-0 bg-white shadow-md z-40 w-64 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out">
-            <div class="p-6">
-                <nav class="space-y-4">
-                    <p class="text-xs font-semibold text-gray-400 uppercase">Menú Principal</p>
-                    <a href="#" class="flex items-center p-2 text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg group transition">
-                        <i class="fas fa-home mr-3"></i> Inicio
+    <!-- ========== CONTENEDOR PRINCIPAL (con sidebar + main) ========== -->
+    <div class="flex flex-1 relative">
+        <!-- SIDEBAR (barra lateral) - semántico con <aside> -->
+        <aside id="sidebar" class="sidebar-transition fixed lg:static inset-y-0 left-0 transform -translate-x-full lg:translate-x-0 z-20 w-64 bg-white shadow-xl lg:shadow-md border-r border-gray-200 flex flex-col h-full lg:h-auto">
+            <!-- perfil simple en sidebar -->
+            <div class="p-5 border-b border-gray-100 bg-gradient-to-r from-indigo-50 to-white">
+                <div class="flex items-center space-x-3">
+                    <div class="h-10 w-10 rounded-full bg-indigo-200 flex items-center justify-center text-indigo-700 font-bold text-lg">A</div>
+                    <div>
+                        <p class="font-medium text-gray-800">Admin</p>
+                        <p class="text-xs text-gray-500">admin@biblioteca.com</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- navegación lateral (mismas opciones + salir) -->
+            <nav class="flex-1 px-3 py-5 space-y-1" aria-label="Barra lateral">
+                <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-700 rounded-lg hover:bg-indigo-50 hover:text-indigo-700 transition group">
+                    <i class="fas fa-home w-5 text-gray-400 group-hover:text-indigo-600"></i>
+                    <span class="font-medium">Inicio</span>
+                </a>
+                <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-700 rounded-lg hover:bg-indigo-50 hover:text-indigo-700 transition group">
+                    <i class="fas fa-book w-5 text-gray-400 group-hover:text-indigo-600"></i>
+                    <span class="font-medium">Libros</span>
+                </a>
+                <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-700 rounded-lg hover:bg-indigo-50 hover:text-indigo-700 transition group">
+                    <i class="fas fa-hand-holding-heart w-5 text-gray-400 group-hover:text-indigo-600"></i>
+                    <span class="font-medium">Préstamos</span>
+                </a>
+                <div class="pt-4 mt-2 border-t border-gray-100">
+                    <a href="#" class="flex items-center gap-3 px-4 py-3 text-red-600 rounded-lg hover:bg-red-50 transition group">
+                        <i class="fas fa-sign-out-alt w-5"></i>
+                        <span class="font-medium">Salir</span>
                     </a>
-                    <a href="#" class="flex items-center p-2 text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg group transition">
-                        <i class="fas fa-book mr-3"></i> Libros
-                    </a>
-                    <a href="#" class="flex items-center p-2 text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg group transition">
-                        <i class="fas fa-hand-holding-heart mr-3"></i> Préstamos
-                    </a>
-                    <hr class="my-4">
-                    <a href="#" class="flex items-center p-2 text-red-600 hover:bg-red-50 rounded-lg transition">
-                        <i class="fas fa-sign-out-alt mr-3"></i> Salir
-                    </a>
-                </nav>
+                </div>
+            </nav>
+            <!-- pie de sidebar (opcional) -->
+            <div class="p-4 text-xs text-gray-400 border-t text-center">
+                v2.1 · gestión interna
             </div>
         </aside>
 
-        <main class="flex-1 p-6 min-h-screen">
-            <header class="mb-6">
-                <h1 class="text-3xl font-semibold text-gray-800">Panel de Administración</h1>
-                <p class="text-gray-600">Bienvenido al sistema de gestión de la biblioteca.</p>
-            </header>
+        <!-- overlay oscuro para móvil cuando el sidebar está abierto -->
+        <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-10 hidden lg:hidden transition-opacity"></div>
 
-            <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                    <div class="flex items-center">
-                        <div class="p-3 bg-blue-100 text-blue-600 rounded-full mr-4"><i class="fas fa-users text-xl"></i></div>
-                        <div>
-                            <p class="text-sm text-gray-500 uppercase">Usuarios Activos</p>
-                            <p class="text-2xl font-bold">1,250</p>
-                        </div>
-                    </div>
+        <!-- ========== MAIN (contenido principal) ========== -->
+        <main class="flex-1 p-4 sm:p-6 lg:p-8 min-w-0" aria-label="Panel de administración">
+            <!-- Breadcrumb o título de página -->
+            <div class="mb-6 flex flex-wrap items-center justify-between gap-4">
+                <h1 class="text-2xl sm:text-3xl font-semibold text-gray-800 flex items-center gap-2">
+                    <i class="fas fa-tachometer-alt text-indigo-600"></i> 
+                    Panel de control
+                </h1>
+                <div class="bg-white px-4 py-2 rounded-full shadow-sm text-sm text-gray-600 border">
+                    <i class="far fa-calendar-alt mr-2"></i> 15 de febrero, 2026
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                    <div class="flex items-center">
-                        <div class="p-3 bg-green-100 text-green-600 rounded-full mr-4"><i class="fas fa-book-open text-xl"></i></div>
-                        <div>
-                            <p class="text-sm text-gray-500 uppercase">Total Libros</p>
-                            <p class="text-2xl font-bold">3,420</p>
-                        </div>
+            </div>
+
+            <!-- Tarjetas de resumen (estadísticas rápidas) -->
+            <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8" aria-label="Indicadores">
+                <article class="bg-white rounded-2xl shadow-sm p-5 border-l-4 border-indigo-500 flex justify-between items-center hover:shadow transition">
+                    <div>
+                        <p class="text-sm text-gray-500 uppercase tracking-wider">Usuarios</p>
+                        <p class="text-3xl font-bold text-gray-800">248</p>
+                        <p class="text-xs text-green-600 mt-1"><i class="fas fa-arrow-up"></i> +12 esta semana</p>
                     </div>
+                    <div class="h-12 w-12 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-600 text-xl">
+                        <i class="fas fa-users"></i>
+                    </div>
+                </article>
+                <article class="bg-white rounded-2xl shadow-sm p-5 border-l-4 border-emerald-500 flex justify-between items-center hover:shadow transition">
+                    <div>
+                        <p class="text-sm text-gray-500 uppercase tracking-wider">Libros</p>
+                        <p class="text-3xl font-bold text-gray-800">1,453</p>
+                        <p class="text-xs text-emerald-600 mt-1"><i class="fas fa-book"></i> 23 títulos nuevos</p>
+                    </div>
+                    <div class="h-12 w-12 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600 text-xl">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                </article>
+                <article class="bg-white rounded-2xl shadow-sm p-5 border-l-4 border-amber-500 flex justify-between items-center hover:shadow transition">
+                    <div>
+                        <p class="text-sm text-gray-500 uppercase tracking-wider">Préstamos activos</p>
+                        <p class="text-3xl font-bold text-gray-800">97</p>
+                        <p class="text-xs text-amber-600 mt-1"><i class="fas fa-clock"></i> 14 vencen hoy</p>
+                    </div>
+                    <div class="h-12 w-12 bg-amber-100 rounded-full flex items-center justify-center text-amber-600 text-xl">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                </article>
+                <article class="bg-white rounded-2xl shadow-sm p-5 border-l-4 border-rose-500 flex justify-between items-center hover:shadow transition">
+                    <div>
+                        <p class="text-sm text-gray-500 uppercase tracking-wider">Multas pendientes</p>
+                        <p class="text-3xl font-bold text-gray-800">$1,280</p>
+                        <p class="text-xs text-rose-600 mt-1"><i class="fas fa-exclamation-triangle"></i> 8 usuarios</p>
+                    </div>
+                    <div class="h-12 w-12 bg-rose-100 rounded-full flex items-center justify-center text-rose-600 text-xl">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                </article>
+            </section>
+
+            <!-- tabla de ejemplo: últimos préstamos (simulación) -->
+            <section class="bg-white rounded-2xl shadow-sm p-5" aria-label="Listado de préstamos recientes">
+                <div class="flex items-center justify-between mb-5">
+                    <h2 class="text-lg font-semibold text-gray-800 flex items-center gap-2">
+                        <i class="fas fa-history text-indigo-600"></i> Últimos préstamos
+                    </h2>
+                    <a href="#" class="text-indigo-600 hover:text-indigo-800 text-sm font-medium flex items-center gap-1">
+                        Ver todos <i class="fas fa-arrow-right text-xs"></i>
+                    </a>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                    <div class="flex items-center">
-                        <div class="p-3 bg-yellow-100 text-yellow-600 rounded-full mr-4"><i class="fas fa-clock text-xl"></i></div>
-                        <div>
-                            <p class="text-sm text-gray-500 uppercase">Préstamos Pendientes</p>
-                            <p class="text-2xl font-bold">48</p>
-                        </div>
-                    </div>
+                <div class="overflow-x-auto -mx-5 px-5 pb-2"> <!-- scroll horizontal solo si es necesario -->
+                    <table class="min-w-full divide-y divide-gray-200 text-sm">
+                        <thead class="bg-gray-50 text-gray-600">
+                            <tr>
+                                <th scope="col" class="px-4 py-3 text-left font-medium">Usuario</th>
+                                <th scope="col" class="px-4 py-3 text-left font-medium">Libro</th>
+                                <th scope="col" class="px-4 py-3 text-left font-medium">Préstamo</th>
+                                <th scope="col" class="px-4 py-3 text-left font-medium">Devolución</th>
+                                <th scope="col" class="px-4 py-3 text-left font-medium">Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-100">
+                            <tr>
+                                <td class="px-4 py-3 font-medium">Carmen López</td>
+                                <td class="px-4 py-3">Cien años de soledad</td>
+                                <td class="px-4 py-3">10/02/2026</td>
+                                <td class="px-4 py-3">24/02/2026</td>
+                                <td class="px-4 py-3"><span class="bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs">En tiempo</span></td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-medium">Roberto Méndez</td>
+                                <td class="px-4 py-3">El nombre del viento</td>
+                                <td class="px-4 py-3">01/02/2026</td>
+                                <td class="px-4 py-3">15/02/2026</td>
+                                <td class="px-4 py-3"><span class="bg-red-100 text-red-700 px-2 py-1 rounded-full text-xs">Vencido</span></td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-medium">Lucía Fernández</td>
+                                <td class="px-4 py-3">1984 (George Orwell)</td>
+                                <td class="px-4 py-3">14/02/2026</td>
+                                <td class="px-4 py-3">28/02/2026</td>
+                                <td class="px-4 py-3"><span class="bg-blue-100 text-blue-700 px-2 py-1 rounded-full text-xs">Nuevo</span></td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-medium">Diego Ramírez</td>
+                                <td class="px-4 py-3">Sapiens: de animales a dioses</td>
+                                <td class="px-4 py-3">05/02/2026</td>
+                                <td class="px-4 py-3">19/02/2026</td>
+                                <td class="px-4 py-3"><span class="bg-amber-100 text-amber-700 px-2 py-1 rounded-full text-xs">Por vencer</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </section>
 
-            <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-                <div class="p-6 border-b border-gray-100">
-                    <h2 class="font-bold text-gray-700">Actividad Reciente</h2>
+            <!-- espacio para más contenido (gráficos, etc) -->
+            <div class="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="bg-white p-5 rounded-2xl shadow-sm lg:col-span-2">
+                    <h3 class="font-medium text-gray-700 mb-3"><i class="fas fa-chart-line mr-2 text-indigo-500"></i> Préstamos últimos 7 días</h3>
+                    <div class="h-32 flex items-end gap-2">
+                        <!-- barras simuladas (meramente decorativas) -->
+                        <div class="w-1/7 bg-indigo-200 h-10 rounded-t"></div>
+                        <div class="w-1/7 bg-indigo-300 h-16 rounded-t"></div>
+                        <div class="w-1/7 bg-indigo-400 h-20 rounded-t"></div>
+                        <div class="w-1/7 bg-indigo-500 h-24 rounded-t"></div>
+                        <div class="w-1/7 bg-indigo-400 h-20 rounded-t"></div>
+                        <div class="w-1/7 bg-indigo-300 h-14 rounded-t"></div>
+                        <div class="w-1/7 bg-indigo-200 h-8 rounded-t"></div>
+                    </div>
+                    <p class="text-xs text-gray-400 mt-2">Gráfico ilustrativo · integración futura</p>
                 </div>
-                <div class="p-20 text-center text-gray-400">
-                    <i class="fas fa-folder-open text-5xl mb-4"></i>
-                    <p>No hay datos recientes para mostrar.</p>
+                <div class="bg-white p-5 rounded-2xl shadow-sm">
+                    <h3 class="font-medium text-gray-700 mb-3"><i class="fas fa-tag mr-2 text-indigo-500"></i> Categorías populares</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex justify-between"><span>Novela</span> <span class="font-semibold">43%</span></li>
+                        <li class="flex justify-between"><span>Ciencia ficción</span> <span class="font-semibold">22%</span></li>
+                        <li class="flex justify-between"><span>Historia</span> <span class="font-semibold">18%</span></li>
+                        <li class="flex justify-between"><span>Infantil</span> <span class="font-semibold">12%</span></li>
+                    </ul>
                 </div>
             </div>
         </main>
     </div>
 
-    <footer class="bg-white border-t border-gray-200 py-6 mt-10">
-        <div class="container mx-auto px-6 text-center">
-            <p class="text-gray-600 text-sm">
-                &copy; 2026 BiblioTec. Todos los derechos reservados.
-            </p>
-        </div>
+    <!-- ========== FOOTER (semántico) ========== -->
+    <footer class="bg-white border-t border-gray-200 py-4 px-6 text-center text-gray-500 text-sm">
+        <p>© 2026 Biblioteca Central · Todos los derechos reservados. 
+            <span class="mx-2">|</span> 
+            <a href="#" class="hover:text-indigo-600">Política de privacidad</a> 
+            <span class="mx-2">|</span> 
+            <a href="#" class="hover:text-indigo-600">Términos de uso</a>
+        </p>
+        <p class="text-xs mt-1">Sistema de administración v2.0 · panel responsivo con Tailwind</p>
     </footer>
 
+    <!-- ========== JAVASCRIPT VANILLA (menú hamburguesa) ========== -->
     <script>
-        const btn = document.getElementById('mobile-menu-button');
-        const sidebar = document.getElementById('sidebar');
+        (function() {
+            const menuBtn = document.getElementById('menuBtn');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            const body = document.body;
 
-        btn.addEventListener('click', () => {
-            sidebar.classList.toggle('-translate-x-full');
-        });
-
-        // Cerrar sidebar al hacer clic fuera en pantallas pequeñas
-        window.addEventListener('click', (e) => {
-            if (!sidebar.contains(e.target) && !btn.contains(e.target) && window.innerWidth < 1024) {
-                sidebar.classList.add('-translate-x-full');
+            function openSidebar() {
+                sidebar.classList.remove('-translate-x-full');
+                overlay.classList.remove('hidden');
+                // prevenir scroll del body
+                body.style.overflow = 'hidden';
             }
-        });
+
+            function closeSidebar() {
+                sidebar.classList.add('-translate-x-full');
+                overlay.classList.add('hidden');
+                body.style.overflow = '';
+            }
+
+            // toggle menú
+            if (menuBtn) {
+                menuBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (sidebar.classList.contains('-translate-x-full')) {
+                        openSidebar();
+                    } else {
+                        closeSidebar();
+                    }
+                });
+            }
+
+            // cerrar al hacer clic en overlay
+            if (overlay) {
+                overlay.addEventListener('click', closeSidebar);
+            }
+
+            // cerrar con tecla Escape
+            window.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !sidebar.classList.contains('-translate-x-full') && window.innerWidth < 1024) {
+                    closeSidebar();
+                }
+            });
+
+            // manejar cambio de tamaño de pantalla: si pasa a lg, aseguramos que sidebar visible y overlay oculto
+            window.addEventListener('resize', function() {
+                if (window.innerWidth >= 1024) {
+                    // pantalla grande: sidebar visible siempre, overlay oculto, restaura scroll
+                    sidebar.classList.remove('-translate-x-full');
+                    overlay.classList.add('hidden');
+                    body.style.overflow = '';
+                } else {
+                    // pantalla pequeña: aseguramos que sidebar comience oculto si no fue manipulado antes (por si acaso)
+                    // pero no lo forzamos a ocultarse si el usuario no lo ha cerrado? mejor dejamos estado actual
+                    // pero si estaba abierto en escritorio y reducimos, debe seguir abierto? normalmente se oculta.
+                    // vamos a asegurar que en móvil esté oculto por defecto (si no hay interacción previa)
+                    // pero para evitar conflictos, solo aplicamos si no hay interacción: dejamos que el estado persista.
+                    // Para mantener consistencia, lo ideal es que al volver a móvil desde escritorio se oculte si no estaba abierto.
+                    // Simplificamos: si estábamos en lg, sidebar visible, al achicar pantalla forzamos oculto.
+                    if (!sidebar.classList.contains('-translate-x-full')) {
+                        // estaba visible (probablemente por el lg) -> lo ocultamos para móvil.
+                        sidebar.classList.add('-translate-x-full');
+                        overlay.classList.add('hidden');
+                        body.style.overflow = '';
+                    }
+                }
+            });
+
+            // inicialización: si la pantalla arranca en móvil, asegurar sidebar oculto (por si acaso)
+            if (window.innerWidth < 1024) {
+                sidebar.classList.add('-translate-x-full');
+                overlay.classList.add('hidden');
+            } else {
+                sidebar.classList.remove('-translate-x-full'); // visible en lg
+            }
+
+            // opcional: cerrar si se hace clic fuera del sidebar en móvil (ya lo hace overlay)
+        })();
     </script>
+
+    <!-- pequeño ajuste para que el fixed sidebar no quede detrás del header en móvil -->
+    <style>
+        @media (max-width: 1023px) {
+            #sidebar {
+                top: 4rem; /* altura del header 64px = 4rem */
+                height: calc(100% - 4rem);
+            }
+        }
+        /* en desktop la sidebar es estática y no necesita top */
+        @media (min-width: 1024px) {
+            #sidebar {
+                position: static;
+                height: auto;
+                transform: none;
+            }
+        }
+    </style>
 </body>
 </html>

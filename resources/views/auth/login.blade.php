@@ -16,7 +16,8 @@
                 </div>
 
                 <!-- Formulario de login -->
-                <form class="space-y-6" action="#" method="post">
+                <form class="space-y-6" action="{{ route('login') }}" method="post">
+                 @csrf 
                     <!-- Email -->
                     <div>
                         <label for="login-email" class="block text-sm font-medium text-gray-700 mb-1.5">

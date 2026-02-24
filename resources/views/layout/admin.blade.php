@@ -38,7 +38,7 @@
                     <a href="#" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-600 transition flex items-center gap-1.5"><i class="fas fa-users"></i> Usuarios</a>
                     <a href="#" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-600 transition flex items-center gap-1.5"><i class="fas fa-book"></i> Libros</a>
                     <a href="#" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-600 transition flex items-center gap-1.5"><i class="fas fa-hand-holding-heart"></i> Préstamos</a>
-                    <a href="#" class="ml-2 px-3 py-2 rounded-md text-sm font-medium bg-indigo-800 hover:bg-indigo-900 transition flex items-center gap-1.5"><i class="fas fa-sign-out-alt"></i> Salir</a>
+                    <a href="{{route('logout')}}" class="ml-2 px-3 py-2 rounded-md text-sm font-medium bg-indigo-800 hover:bg-indigo-900 transition flex items-center gap-1.5"><i class="fas fa-sign-out-alt"></i> Salir</a>
                 </nav>
 
                 <!-- Menú móvil -->
@@ -73,6 +73,10 @@
                 <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-700 rounded-lg hover:bg-indigo-50 hover:text-indigo-700 transition group">
                     <i class="fas fa-home w-5 text-gray-400 group-hover:text-indigo-600"></i>
                     <span class="font-medium">Inicio</span>
+                </a>
+                <a href="{{ route('categorias.index') }}" class="flex items-center gap-3 px-4 py-3 text-gray-700 rounded-lg hover:bg-indigo-50 hover:text-indigo-700 transition group">
+                    <i class="fas fa-tags w-5 text-gray-400 group-hover:text-indigo-600"></i>
+                    <span class="font-medium">Categorias</span>
                 </a>
                 <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-700 rounded-lg hover:bg-indigo-50 hover:text-indigo-700 transition group">
                     <i class="fas fa-book w-5 text-gray-400 group-hover:text-indigo-600"></i>

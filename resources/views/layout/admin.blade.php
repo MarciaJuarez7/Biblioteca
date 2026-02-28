@@ -34,7 +34,7 @@
 
                 <!-- Menú superior desktop -->
                 <nav class="hidden md:flex items-center space-x-1 lg:space-x-2">
-                    <a href="#" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-600 transition flex items-center gap-1.5"><i class="fas fa-home"></i> Inicio</a>
+                    <a href="{{ route('home')}}" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-600 transition flex items-center gap-1.5"><i class="fas fa-home"></i> Inicio</a>
                     <a href="#" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-600 transition flex items-center gap-1.5"><i class="fas fa-users"></i> Usuarios</a>
                     <a href="#" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-600 transition flex items-center gap-1.5"><i class="fas fa-book"></i> Libros</a>
                     <a href="#" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-600 transition flex items-center gap-1.5"><i class="fas fa-hand-holding-heart"></i> Préstamos</a>
@@ -43,7 +43,7 @@
 
                 <!-- Menú móvil -->
                 <div class="flex md:hidden items-center space-x-1">
-                    <a href="#" class="p-2 rounded-full hover:bg-indigo-600"><i class="fas fa-home"></i></a>
+                    <a href="{{ route('home')}}" class="p-2 rounded-full hover:bg-indigo-600"><i class="fas fa-home"></i></a>
                     <a href="#" class="p-2 rounded-full hover:bg-indigo-600"><i class="fas fa-users"></i></a>
                     <a href="#" class="p-2 rounded-full hover:bg-indigo-600"><i class="fas fa-book"></i></a>
                     <a href="#" class="p-2 rounded-full hover:bg-indigo-600"><i class="fas fa-hand-holding-heart"></i></a>
@@ -70,7 +70,7 @@
             
             <!-- navegación lateral -->
             <nav class="flex-1 px-3 py-5 space-y-1">
-                <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-700 rounded-lg hover:bg-indigo-50 hover:text-indigo-700 transition group">
+                <a href="{{ route('home')}}" class="flex items-center gap-3 px-4 py-3 text-gray-700 rounded-lg hover:bg-indigo-50 hover:text-indigo-700 transition group">
                     <i class="fas fa-home w-5 text-gray-400 group-hover:text-indigo-600"></i>
                     <span class="font-medium">Inicio</span>
                 </a>

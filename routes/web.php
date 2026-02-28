@@ -22,6 +22,7 @@ Route::get('/logout',[AuthController::class, 'logout'])->name('logout');
 Route::get('/categorias',[CategoriasController::class, 'index'])->name('categorias.index');
 Route::get('/categorias/create',[CategoriasController::class, 'create'])->name('categorias.create');
 Route::post('/categorias/store',[CategoriasController::class, 'store'])->name('categorias.store');
-
+Route::get('/categorias/{id}/edit', [CategoriasController::class, 'edit'])->name('categorias.edit');
+Route::put('/categorias/{id}', [CategoriasController::class, 'update'])->name('categorias.update');
 
 });

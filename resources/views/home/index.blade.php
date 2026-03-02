@@ -61,9 +61,9 @@
     <h2 class="text-lg font-semibold text-gray-800 flex items-center gap-2">
         <i class="fas fa-list text-indigo-600"></i> Lista de Libros
     </h2>
-    <button onclick="agregarLibro()" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition shadow-sm">
-        <i class="fas fa-plus"></i> Agregar libro
-    </button>
+    <a href="{{ route('libros.create') }}" class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md flex items-center">
+         <i class="fas fa-plus"></i> Agregar libro
+    </a>
 </div>
 
 <p class="text-sm text-gray-500 mb-4">Administra el catálogo de libros de la biblioteca</p>
@@ -83,11 +83,13 @@
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-100">
+                 @foreach($libros as $libro)
                 <tr>
-                    <td class="px-4 py-3 font-medium">Cien años de soledad</td>
-                    <td class="px-4 py-3">Gabriel García Márquez</td>
-                    <td class="px-4 py-3">978-0307474788</td>
-                    <td class="px-4 py-3">Literatura</td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="font-medium text-gray-900">{{ $libro->nombre }}</div>
+                    <td class="px-4 py-3">{{ $libro->autor }}</td>
+                    <td class="px-4 py-3">{{ $libro->isbn }}</td>
+                    <td class="px-4 py-3">{{ $libro->categoria->nombre }}</td>
                     <td class="px-4 py-3"><span class="bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs">Disponible</span></td>
                     <td class="px-4 py-3">
                         <div class="flex gap-2">
@@ -100,64 +102,14 @@
                         </div>
                     </td>
                 </tr>
-                <tr>
-                    <td class="px-4 py-3 font-medium">1984</td>
-                    <td class="px-4 py-3">George Orwell</td>
-                    <td class="px-4 py-3">978-0451524935</td>
-                    <td class="px-4 py-3">Ciencia Ficción</td>
-                    <td class="px-4 py-3"><span class="bg-amber-100 text-amber-700 px-2 py-1 rounded-full text-xs">Préstamo</span></td>
-                    <td class="px-4 py-3">
-                        <div class="flex gap-2">
-                            <button onclick="editarLibro('1984')" class="text-indigo-600 hover:text-indigo-800 text-sm" title="Editar">
-                                <i class="fas fa-edit"></i>
-                            </button>
-                            <button onclick="eliminarLibro('1984')" class="text-red-600 hover:text-red-800 text-sm" title="Eliminar">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="px-4 py-3 font-medium">Don Quijote de la Mancha</td>
-                    <td class="px-4 py-3">Miguel de Cervantes</td>
-                    <td class="px-4 py-3">978-8120322853</td>
-                    <td class="px-4 py-3">Literatura</td>
-                    <td class="px-4 py-3"><span class="bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs">Disponible</span></td>
-                    <td class="px-4 py-3">
-                        <div class="flex gap-2">
-                            <button onclick="editarLibro('Don Quijote')" class="text-indigo-600 hover:text-indigo-800 text-sm" title="Editar">
-                                <i class="fas fa-edit"></i>
-                            </button>
-                            <button onclick="eliminarLibro('Don Quijote')" class="text-red-600 hover:text-red-800 text-sm" title="Eliminar">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="px-4 py-3 font-medium">El nombre del viento</td>
-                    <td class="px-4 py-3">Patrick Rothfuss</td>
-                    <td class="px-4 py-3">978-8401352836</td>
-                    <td class="px-4 py-3">Fantasía</td>
-                    <td class="px-4 py-3"><span class="bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs">Disponible</span></td>
-                    <td class="px-4 py-3">
-                        <div class="flex gap-2">
-                            <button onclick="editarLibro('El nombre del viento')" class="text-indigo-600 hover:text-indigo-800 text-sm" title="Editar">
-                                <i class="fas fa-edit"></i>
-                            </button>
-                            <button onclick="eliminarLibro('El nombre del viento')" class="text-red-600 hover:text-red-800 text-sm" title="Eliminar">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
-                    </td>
-                </tr>
+                  @endforeach
             </tbody>
         </table>
     </div>
     
     <!-- Paginación -->
     <div class="flex items-center justify-between mt-4 pt-4 border-t border-gray-200">
-        <p class="text-sm text-gray-500">Mostrando 1 a 4 de 1,247 resultados</p>
+        <p class="text-sm text-gray-500">Mostrando 1 a 4 de 1 resultados</p>
         <div class="flex gap-2">
             <button onclick="cambiarPagina('anterior')" class="px-3 py-1 border rounded-md text-sm hover:bg-gray-50">«</button>
             <button onclick="cambiarPagina(1)" class="px-3 py-1 border rounded-md text-sm bg-indigo-50 text-indigo-600">1</button>

@@ -93,12 +93,12 @@
                     <td class="px-4 py-3"><span class="bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs">Disponible</span></td>
                     <td class="px-4 py-3">
                         <div class="flex gap-2">
-                            <button onclick="editarLibro('Cien años de soledad')" class="text-indigo-600 hover:text-indigo-800 text-sm" title="Editar">
-                                <i class="fas fa-edit"></i>
-                            </button>
-                            <button onclick="eliminarLibro('Cien años de soledad')" class="text-red-600 hover:text-red-800 text-sm" title="Eliminar">
-                                <i class="fas fa-trash"></i>
-                            </button>
+                            <a href="{{ route('libros.edit',$libro->id) }}" class="text-blue-600 hover:text-blue-900 mr-3">Editar</a>
+                            <form action="{{ route('libros.destroy', $libro->id) }}" method="POST" class="inline-block">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="text-red-600 hover:text-red-900">Eliminar</button>
+                            </form>   
                         </div>
                     </td>
                 </tr>

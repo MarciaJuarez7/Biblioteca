@@ -9,6 +9,7 @@ class HomeController extends Controller
 {
     public function index(){
          $libros = Libro::all();
+         $libros = Libro::paginate(2);
 
         return view('home.index', compact('libros'));
     }

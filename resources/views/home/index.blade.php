@@ -108,7 +108,11 @@
     </div>
     
     <!-- Paginación -->
-    <div class="flex items-center justify-between mt-4 pt-4 border-t border-gray-200">
+     <div class="px-6 py-4 border-t border-gray-200 flex items-center justify-between">
+            {{ $libros->links() }}
+        </div>
+     <!-- 
+        <div class="flex items-center justify-between mt-4 pt-4 border-t border-gray-200">
         <p class="text-sm text-gray-500">Mostrando 1 a 4 de 1 resultados</p>
         <div class="flex gap-2">
             <button onclick="cambiarPagina('anterior')" class="px-3 py-1 border rounded-md text-sm hover:bg-gray-50">«</button>
@@ -119,7 +123,8 @@
             <button onclick="cambiarPagina(5)" class="px-3 py-1 border rounded-md text-sm hover:bg-gray-50">5</button>
             <button onclick="cambiarPagina('siguiente')" class="px-3 py-1 border rounded-md text-sm hover:bg-gray-50">»</button>
         </div>
-    </div>
+    </div> -->
+
 </section>
 
 <!-- Script con las funciones -->

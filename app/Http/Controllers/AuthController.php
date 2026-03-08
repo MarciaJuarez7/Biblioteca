@@ -26,12 +26,14 @@ class AuthController extends Controller
             'name' => $validateData['name'],
             'email' => $validateData['email'],
             'password' => Hash::make($validateData['password']),
+            'username' => $validateData['email'], // Usar el email como username
+            'user_type' => 'user', // Asignar un tipo de usuario por defecto
         ]);
 
         // 3. Iniciar sesión
         auth()->login($user);
 
-        // 4. Redirigir con mensaje de éxito
+        // 3.2 Redirigir con mensaje de éxito
         return redirect()->route('home')->with('success', '¡Registro exitoso!');
         
     } catch (\Illuminate\Validation\ValidationException $e) {

@@ -8,9 +8,14 @@ use App\Models\Libro;
 class HomeController extends Controller
 {
     public function index(){
-         $libros = Libro::all();
-         $libros = Libro::paginate(2);
+         
+        $user = auth()->user();
 
-        return view('home.index', compact('libros'));
+        if($user->user_type === 'admin') {
+            $libros = Libro::paginate(2);
+            return view('home.index', compact('libros'));
+        } else {
+            return view('home.index_user');
+        }
     }
 }

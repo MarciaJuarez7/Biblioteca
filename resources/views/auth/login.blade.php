@@ -15,6 +15,20 @@
                     <p class="text-gray-500 mt-2">Accede a tu cuenta de biblioteca</p>
                 </div>
 
+                <!-- Mensajes flash -->
+                @if(session('success'))
+                    <div class="mb-4 text-green-600">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
+                <!-- Mostrar errores generales -->
+                @if($errors->any())
+                    <div class="mb-4 text-red-600">
+                        {{ $errors->first() }}
+                    </div>
+                @endif
+
                 <!-- Formulario de login -->
                 <form class="space-y-6" action="{{ route('login') }}" method="post">
                  @csrf 
@@ -23,9 +37,12 @@
                         <label for="login-email" class="block text-sm font-medium text-gray-700 mb-1.5">
                             <i class="far fa-envelope mr-2 text-indigo-500"></i>Email
                         </label>
-                        <input type="email" id="login-email" name="email" required 
+                        <input type="email" id="login-email" name="email" value="{{ old('email') }}" required 
                                class="w-full px-5 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all"
                                placeholder="tu@email.com">
+                    @error('email')
+                        <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
+                    @enderror
                     </div>
 
                     <!-- Password -->
@@ -36,6 +53,9 @@
                         <input type="password" id="login-password" name="password" required 
                                class="w-full px-5 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all"
                                placeholder="••••••••">
+                    @error('password')
+                        <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
+                    @enderror
                     </div>
 
                     <!-- Recordar y olvidé contraseña -->

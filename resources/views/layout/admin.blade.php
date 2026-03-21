@@ -36,8 +36,8 @@
                 <nav class="hidden md:flex items-center space-x-1 lg:space-x-2">
                     <a href="{{ route('home')}}" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-600 transition flex items-center gap-1.5"><i class="fas fa-home"></i> Inicio</a>
                     <a href="{{ route('usuarios.index') }}" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-600 transition flex items-center gap-1.5"><i class="fas fa-users"></i> Usuarios</a>
-                    <a href="#" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-600 transition flex items-center gap-1.5"><i class="fas fa-book"></i> Libros</a>
-                    <a href="#" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-600 transition flex items-center gap-1.5"><i class="fas fa-hand-holding-heart"></i> Préstamos</a>
+                    <a href="{{ route('home')}}" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-600 transition flex items-center gap-1.5"><i class="fas fa-book"></i> Libros</a>
+                    <a href="{{ route('prestamos.index') }}" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-600 transition flex items-center gap-1.5"><i class="fas fa-hand-holding-heart"></i> Préstamos</a>
                     <a href="{{route('logout')}}" class="ml-2 px-3 py-2 rounded-md text-sm font-medium bg-indigo-800 hover:bg-indigo-900 transition flex items-center gap-1.5"><i class="fas fa-sign-out-alt"></i> Salir</a>
                 </nav>
 
@@ -45,9 +45,9 @@
                 <div class="flex md:hidden items-center space-x-1">
                     <a href="{{ route('home')}}" class="p-2 rounded-full hover:bg-indigo-600"><i class="fas fa-home"></i></a>
                     <a href="{{ route('usuarios.index') }}" class="p-2 rounded-full hover:bg-indigo-600"><i class="fas fa-users"></i></a>
-                    <a href="#" class="p-2 rounded-full hover:bg-indigo-600"><i class="fas fa-book"></i></a>
-                    <a href="#" class="p-2 rounded-full hover:bg-indigo-600"><i class="fas fa-hand-holding-heart"></i></a>
-                    <a href="#" class="p-2 rounded-full hover:bg-indigo-800"><i class="fas fa-sign-out-alt"></i></a>
+                    <a href="{{ route('home')}}" class="p-2 rounded-full hover:bg-indigo-600"><i class="fas fa-book"></i></a>
+                    <a href="{{ route('prestamos.index') }}" class="p-2 rounded-full hover:bg-indigo-600"><i class="fas fa-hand-holding-heart"></i></a>
+                    <a href="{{ route('logout') }}" class="p-2 rounded-full hover:bg-indigo-800"><i class="fas fa-sign-out-alt"></i></a>
                 </div>
             </div>
         </div>
@@ -82,11 +82,11 @@
                     <i class="fas fa-tags w-5 text-gray-400 group-hover:text-indigo-600"></i>
                     <span class="font-medium">Categorias</span>
                 </a>
-                <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-700 rounded-lg hover:bg-indigo-50 hover:text-indigo-700 transition group">
+                <a href="{{ route('home')}}" class="flex items-center gap-3 px-4 py-3 text-gray-700 rounded-lg hover:bg-indigo-50 hover:text-indigo-700 transition group">
                     <i class="fas fa-book w-5 text-gray-400 group-hover:text-indigo-600"></i>
                     <span class="font-medium">Libros</span>
                 </a>
-                <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-700 rounded-lg hover:bg-indigo-50 hover:text-indigo-700 transition group">
+                <a href="{{ route('prestamos.index') }}" class="flex items-center gap-3 px-4 py-3 text-gray-700 rounded-lg hover:bg-indigo-50 hover:text-indigo-700 transition group">
                     <i class="fas fa-hand-holding-heart w-5 text-gray-400 group-hover:text-indigo-600"></i>
                     <span class="font-medium">Préstamos</span>
                 </a>

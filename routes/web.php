@@ -6,7 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CategoriasController;
 use App\Http\Controllers\LibrosController;
 use App\Http\Controllers\UsuariosController;    
-
+use App\Http\Controllers\PrestamosController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -45,6 +45,7 @@ Route::get('/usuarios/{id}/edit', [UsuariosController::class, 'edit'])->name('us
 Route::put('/usuarios/{id}', [UsuariosController::class, 'update'])->name('usuarios.update');
 Route::get('/usuarios/{id}/delete',[UsuariosController::class,'delete_confirm'])->name('usuarios.delete-confirm');
 Route::delete('/usuarios/{id}', [UsuariosController::class, 'destroy'])->name('usuarios.destroy');
+Route::get('/prestamos', [PrestamosController::class, 'index'])->name('prestamos.index');
 
 });
 

@@ -35,7 +35,7 @@
                 <!-- Menú superior desktop -->
                 <nav class="hidden md:flex items-center space-x-1 lg:space-x-2">
                     <a href="{{ route('home')}}" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-600 transition flex items-center gap-1.5"><i class="fas fa-home"></i> Inicio</a>
-                    <a href="#" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-600 transition flex items-center gap-1.5"><i class="fas fa-users"></i> Usuarios</a>
+                    <a href="{{ route('usuarios.index') }}" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-600 transition flex items-center gap-1.5"><i class="fas fa-users"></i> Usuarios</a>
                     <a href="#" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-600 transition flex items-center gap-1.5"><i class="fas fa-book"></i> Libros</a>
                     <a href="#" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-600 transition flex items-center gap-1.5"><i class="fas fa-hand-holding-heart"></i> Préstamos</a>
                     <a href="{{route('logout')}}" class="ml-2 px-3 py-2 rounded-md text-sm font-medium bg-indigo-800 hover:bg-indigo-900 transition flex items-center gap-1.5"><i class="fas fa-sign-out-alt"></i> Salir</a>
@@ -44,7 +44,7 @@
                 <!-- Menú móvil -->
                 <div class="flex md:hidden items-center space-x-1">
                     <a href="{{ route('home')}}" class="p-2 rounded-full hover:bg-indigo-600"><i class="fas fa-home"></i></a>
-                    <a href="#" class="p-2 rounded-full hover:bg-indigo-600"><i class="fas fa-users"></i></a>
+                    <a href="{{ route('usuarios.index') }}" class="p-2 rounded-full hover:bg-indigo-600"><i class="fas fa-users"></i></a>
                     <a href="#" class="p-2 rounded-full hover:bg-indigo-600"><i class="fas fa-book"></i></a>
                     <a href="#" class="p-2 rounded-full hover:bg-indigo-600"><i class="fas fa-hand-holding-heart"></i></a>
                     <a href="#" class="p-2 rounded-full hover:bg-indigo-800"><i class="fas fa-sign-out-alt"></i></a>
@@ -60,10 +60,10 @@
             <!-- perfil -->
             <div class="p-5 border-b border-gray-100 bg-gradient-to-r from-indigo-50 to-white">
                 <div class="flex items-center space-x-3">
-                    <div class="h-10 w-10 rounded-full bg-indigo-200 flex items-center justify-center text-indigo-700 font-bold text-lg">A</div>
+                    <div class="h-10 w-10 rounded-full bg-indigo-200 flex items-center justify-center text-indigo-700 font-bold text-lg">{{ substr(auth()->user()->name, 0, 1) }}</div>
                     <div>
-                        <p class="font-medium text-gray-800">Admin</p>
-                        <p class="text-xs text-gray-500">admin@biblioteca.com</p>
+                        <p class="font-medium text-gray-800">{{ auth()->user()->name }}</p>
+                        <p class="text-xs text-gray-500">{{ auth()->user()->email }}</p>
                     </div>
                 </div>
             </div>
@@ -73,6 +73,10 @@
                 <a href="{{ route('home')}}" class="flex items-center gap-3 px-4 py-3 text-gray-700 rounded-lg hover:bg-indigo-50 hover:text-indigo-700 transition group">
                     <i class="fas fa-home w-5 text-gray-400 group-hover:text-indigo-600"></i>
                     <span class="font-medium">Inicio</span>
+                </a>
+                <a href="{{ route('usuarios.index') }}" class="flex items-center gap-3 px-4 py-3 text-gray-700 rounded-lg hover:bg-indigo-50 hover:text-indigo-700 transition group">
+                    <i class="fas fa-users w-5 text-gray-400 group-hover:text-indigo-600"></i>
+                    <span class="font-medium">Usuarios</span>
                 </a>
                 <a href="{{ route('categorias.index') }}" class="flex items-center gap-3 px-4 py-3 text-gray-700 rounded-lg hover:bg-indigo-50 hover:text-indigo-700 transition group">
                     <i class="fas fa-tags w-5 text-gray-400 group-hover:text-indigo-600"></i>

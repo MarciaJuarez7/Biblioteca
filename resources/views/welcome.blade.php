@@ -39,7 +39,7 @@
                 <!-- Logo y nombre -->
                 <div class="flex items-center space-x-3">
                     <i class="fas fa-book-open text-indigo-600 text-2xl"></i>
-                    <span class="font-bold text-xl text-gray-800">Biblioteca Abierta</span>
+                    <span class="font-bold text-xl text-gray-800">BookLand</span>
                 </div>
 
                 <!-- Navegación desktop (visible a partir de md) -->
@@ -89,7 +89,7 @@
                         <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
                     </a>
                 </nav>
-                <p class="absolute bottom-6 left-6 text-xs text-gray-400">Biblioteca Abierta © 2026</p>
+                <p class="absolute bottom-6 left-6 text-xs text-gray-400">© 2026 BookLand </p>
             </div>
         </div>
     </header>
@@ -225,7 +225,7 @@
                 <div>
                     <div class="flex items-center space-x-2 text-white mb-4">
                         <i class="fas fa-book-open text-indigo-400 text-xl"></i>
-                        <span class="font-bold text-lg">Biblioteca Abierta</span>
+                        <span class="font-bold text-lg">BookLand </span>
                     </div>
                     <p class="text-sm text-gray-400">Calle del Saber 123, Centro. Horario: Lun-Vie 9:00-20:00, Sáb 10:00-18:00</p>
                 </div>
@@ -259,8 +259,7 @@
                 </div>
             </div>
             <div class="border-t border-gray-800 mt-8 pt-6 text-center text-xs text-gray-500">
-                <p>© 2026 Biblioteca Abierta. Todas las imágenes son de Pexels (libres para uso comercial sin atribución).</p>
-                <p class="mt-1">Diseño con Tailwind CSS · Menú hamburguesa con JavaScript vanilla.</p>
+                <p>© 2026 BookLand .</p>
             </div>
         </div>
     </footer>

@@ -24,7 +24,7 @@ class PrestamosController extends Controller
     public function buscar_usuario(Request $request)
     {
         $usuario_id = $request->input('usuario_id');
-        $usuario_nombre = $request->input('usuario_nombre');
+        $usuario_name = $request->input('usuario_name');
         
         if(!empty($usuario_id))
         {
@@ -33,9 +33,9 @@ class PrestamosController extends Controller
             return view('prestamos.create', compact('usuario'));
         }
         
-        if(!empty($usuario_nombre))
+        if(!empty($usuario_name))
         {            
-            $usuario = User::where('name', 'like', '%' . $usuario_nombre . '%')->first();
+            $usuario = User::where('name', 'like', '%' . $usuario_name . '%')->first();
             
             return view('prestamos.create', compact('usuario'));            
         }

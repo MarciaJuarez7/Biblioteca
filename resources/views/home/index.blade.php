@@ -17,7 +17,7 @@
     <article class="bg-white rounded-2xl shadow-sm p-5 border-l-4 border-indigo-500 flex justify-between items-center hover:shadow transition">
         <div>
             <p class="text-sm text-gray-500 uppercase tracking-wider">Total de libros</p>
-            <p class="text-3xl font-bold text-gray-800">1,247</p>
+            <p class="text-3xl font-bold text-gray-800">5</p>
             <p class="text-xs text-green-600 mt-1"><i class="fas fa-arrow-up"></i> 5.2% desde el mes pasado</p>
         </div>
         <div class="h-12 w-12 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-600 text-xl">
@@ -27,7 +27,7 @@
     <article class="bg-white rounded-2xl shadow-sm p-5 border-l-4 border-amber-500 flex justify-between items-center hover:shadow transition">
         <div>
             <p class="text-sm text-gray-500 uppercase tracking-wider">Libros prestados</p>
-            <p class="text-3xl font-bold text-gray-800">189</p>
+            <p class="text-3xl font-bold text-gray-800"> 1 </p>
             <p class="text-xs text-red-600 mt-1"><i class="fas fa-arrow-down"></i> 2.1% desde el mes pasado</p>
         </div>
         <div class="h-12 w-12 bg-amber-100 rounded-full flex items-center justify-center text-amber-600 text-xl">
@@ -37,7 +37,7 @@
     <article class="bg-white rounded-2xl shadow-sm p-5 border-l-4 border-emerald-500 flex justify-between items-center hover:shadow transition">
         <div>
             <p class="text-sm text-gray-500 uppercase tracking-wider">Usuarios activos</p>
-            <p class="text-3xl font-bold text-gray-800">543</p>
+            <p class="text-3xl font-bold text-gray-800">3</p>
             <p class="text-xs text-green-600 mt-1"><i class="fas fa-arrow-up"></i> 12.7% desde el mes pasado</p>
         </div>
         <div class="h-12 w-12 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600 text-xl">
@@ -47,7 +47,7 @@
     <article class="bg-white rounded-2xl shadow-sm p-5 border-l-4 border-rose-500 flex justify-between items-center hover:shadow transition">
         <div>
             <p class="text-sm text-gray-500 uppercase tracking-wider">Devoluciones pendientes</p>
-            <p class="text-3xl font-bold text-gray-800">24</p>
+            <p class="text-3xl font-bold text-gray-800">1</p>
             <p class="text-xs text-green-600 mt-1"><i class="fas fa-arrow-up"></i> 3.4% desde ayer</p>
         </div>
         <div class="h-12 w-12 bg-rose-100 rounded-full flex items-center justify-center text-rose-600 text-xl">
@@ -90,7 +90,14 @@
                     <td class="px-4 py-3">{{ $libro->autor }}</td>
                     <td class="px-4 py-3">{{ $libro->isbn }}</td>
                     <td class="px-4 py-3">{{ $libro->categoria->nombre }}</td>
-                    <td class="px-4 py-3"><span class="bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs">Disponible</span></td>
+                    <td class="px-4 py-3">
+                       @if($libro->estatus == 0)
+                       <span class="bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs">Disponible</span></td>
+                    
+                        @else
+                    <span class="bg-red-100 text-red-700 px-2 py-1 rounded-full text-xs">Prestado</span>
+                        
+                    @endif
                     <td class="px-4 py-3">
                         <div class="flex gap-2">
                             <a href="{{ route('libros.edit',$libro->id) }}" class="text-blue-600 hover:text-blue-900 mr-3">Editar</a>

@@ -32,6 +32,11 @@
                     <td class="px-4 py-2 border-b text-center">{{ $prestamo->created_at->format('Y-m-d') }}</td>
                     <td class="px-4 py-2 border-b text-center">
                         <!-- Aquí puedes agregar botones para editar o eliminar el préstamo -->
+                        <a href="#" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-1 px-3 rounded">Editar</a>
+                        <form action="#" method="POST" class="inline-block">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded">Eliminar</button>
                     </td>
                 </tr>
             @endforeach

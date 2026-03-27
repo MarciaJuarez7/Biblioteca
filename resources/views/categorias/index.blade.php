@@ -25,9 +25,9 @@
             <tbody>
                 @foreach($categorias as $categoria)
                 <tr>
-                    <td class="px-4 py-2 border-b">{{ $categoria->id }}</td>
-                    <td class="px-4 py-2 border-b">{{ $categoria->nombre }}</td>
-                    <td class="px-4 py-2 border-b">
+                    <td class="px-4 py-2 border-b text-center">{{ $categoria->id }}</td>
+                    <td class="px-4 py-2 border-b text-center">{{ $categoria->nombre }}</td>
+                    <td class="px-4 py-2 border-b text-center">
                                 <a href="{{ route('categorias.edit', $categoria->id) }}" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">Editar</a>
                                 <form action="{{ route('categorias.destroy', $categoria->id) }}" method="POST" class="inline-block">
                                     @csrf

@@ -79,4 +79,25 @@ class PrestamosController extends Controller
 
         return redirect()->route('prestamos.index')->with('success', 'Préstamo registrado exitosamente.');
    }
+   public function entregar($id)
+   {
+         # Crear transaccion
+        \DB::beginTransaction();
+        try{
+       $prestamo = Prestamo::findOrFail($id);
+       $prestamo->estado = 'entregado';
+       $prestamo->fecha_entrega = now();
+       $prestamo->save();
+
+       $libro = Libro::findOrFail($prestamo->libro_id);
+       $libro->estatus = 0;
+       $libro->save();
+
+        \DB::commit();
+         } catch (\Exception $e) {
+            \DB::rollBack();
+            return redirect()->route('prestamos.index')->with('error', 'Error al registrar el préstamo. ');
+        }
+       return redirect()->route('prestamos.index')->with('success', 'Libro entregado exitosamente.');
+   }
 }

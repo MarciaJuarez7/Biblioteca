@@ -19,7 +19,9 @@
                 <th class="px-4 py-2 border-b">ID</th>
                 <th class="px-4 py-2 border-b">Libro</th>
                 <th class="px-4 py-2 border-b">Usuario</th>
-                <th class="px-4 py-2 border-b">Fecha</th>
+                <th class="px-4 py-2 border-b">Fecha del Prestamo</th>
+                <th class="px-4 py-2 border-b">Estatus</th>
+                <th class="px-4 py-2 border-b">Fecha de Entrega</th>
                 <th class="px-4 py-2 border-b">Acciones</th>
             </tr>
         </thead>
@@ -31,12 +33,20 @@
                     <td class="px-4 py-2 border-b text-center">{{ $prestamo->usuario->name }}</td>
                     <td class="px-4 py-2 border-b text-center">{{ $prestamo->created_at->format('Y-m-d') }}</td>
                     <td class="px-4 py-2 border-b text-center">
+                        @if($prestamo->estado == 'pendiente')
+                            <span class="text-red-500 font-bold">Pendiente</span>
+                        @else
+                            <span class="text-green-500 font-bold">Entregado</span>
+                        @endif
+                    </td>
+                     <td class="px-6 py-4 whitespace-nowrap text-center">{{ $prestamo->fecha_entrega ? $prestamo->fecha_entrega : '' }}
+
+                     </td>
+                    <td class="px-4 py-2 border-b text-center">
                         <!-- Aquí puedes agregar botones para editar o eliminar el préstamo -->
-                        <a href="#" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-1 px-3 rounded">Editar</a>
-                        <form action="#" method="POST" class="inline-block">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded">Eliminar</button>
+                         @if($prestamo->estado == 'pendiente')
+                        <a href="{{ route('prestamos.entregar', $prestamo->id) }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded">Entregar</a>               
+                    @endif
                     </td>
                 </tr>
             @endforeach

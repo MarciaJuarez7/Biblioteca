@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login y Registro · Biblioteca</title>
+    <title>Administración BookLand</title>
     <!-- Tailwind CSS via CDN + Font Awesome -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -29,7 +29,7 @@
                         <i class="fas fa-bars text-xl"></i>
                     </button>
                     <i class="fas fa-book-open text-2xl hidden sm:block"></i>
-                    <span class="font-semibold text-xl tracking-tight">Biblioteca Central</span>
+                    <span class="font-semibold text-xl tracking-tight">BookLand</span>
                 </div>
 
                 <!-- Menú superior desktop -->

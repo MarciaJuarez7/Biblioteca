@@ -6,7 +6,7 @@
                 <div>
                     <div class="flex items-center space-x-2 text-white mb-4">
                         <i class="fas fa-book-open text-indigo-400 text-xl"></i>
-                        <span class="font-bold text-lg">Biblioteca Abierta</span>
+                        <span class="font-bold text-lg">BookLand</span>
                     </div>
                     <p class="text-sm text-gray-400">Calle del Saber 123, Centro. Horario: Lun-Vie 9:00-20:00, Sáb 10:00-18:00</p>
                 </div>
@@ -25,8 +25,8 @@
                     <h4 class="text-white font-semibold mb-4">Contacto</h4>
                     <ul class="space-y-2 text-sm">
                         <li class="flex items-center gap-2"><i class="fas fa-phone w-4 text-indigo-400"></i> 555-123-4567</li>
-                        <li class="flex items-center gap-2"><i class="fas fa-envelope w-4 text-indigo-400"></i> info@bibliotecaabierta.org</li>
-                        <li class="flex items-center gap-2"><i class="fab fa-twitter w-4 text-indigo-400"></i> @biblio_abierta</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-envelope w-4 text-indigo-400"></i> info@bookland.org</li>
+                        <li class="flex items-center gap-2"><i class="fab fa-twitter w-4 text-indigo-400"></i> @bookland</li>
                     </ul>
                 </div>
                 <!-- Col 4: newsletter -->
@@ -40,8 +40,8 @@
                 </div>
             </div>
             <div class="border-t border-gray-800 mt-8 pt-6 text-center text-xs text-gray-500">
-                <p>© 2026 Biblioteca Abierta. Todos los derechos reservados.</p>
-                <p class="mt-1">Diseño con Tailwind CSS · Formularios responsivos</p>
+                <p>© 2026 BookLand. Todos los derechos reservados.</p>
+                
             </div>
         </div>
     </footer>

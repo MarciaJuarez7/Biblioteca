@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Biblioteca | BiblioTech</title>
+    <title>BookLand</title>
 
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet">
@@ -194,15 +194,15 @@
                         <h2 class="text-3xl font-bold text-gray-800 mb-4">Próximos eventos</h2>
                         <ul class="space-y-4">
                             <li class="flex items-start gap-4 bg-white p-4 rounded-xl shadow-sm">
-                                <span class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-sm font-bold">15 MAR</span>
+                                <span class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-sm font-bold">15 ABR</span>
                                 <div><p class="font-semibold">Club de novela negra</p><p class="text-sm text-gray-500">Discutimos "La chica del tren"</p></div>
                             </li>
                             <li class="flex items-start gap-4 bg-white p-4 rounded-xl shadow-sm">
-                                <span class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-sm font-bold">22 MAR</span>
+                                <span class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-sm font-bold">01 MAY</span>
                                 <div><p class="font-semibold">Taller de escritura creativa</p><p class="text-sm text-gray-500">Imparte: Laura García</p></div>
                             </li>
                             <li class="flex items-start gap-4 bg-white p-4 rounded-xl shadow-sm">
-                                <span class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-sm font-bold">05 ABR</span>
+                                <span class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-sm font-bold">05 MAY</span>
                                 <div><p class="font-semibold">Cuentacuentos familiar</p><p class="text-sm text-gray-500">Para niños de 3 a 8 años</p></div>
                             </li>
                         </ul>
@@ -244,8 +244,8 @@
                     <h4 class="text-white font-semibold mb-4">Contacto</h4>
                     <ul class="space-y-2 text-sm">
                         <li class="flex items-center gap-2"><i class="fas fa-phone w-4 text-indigo-400"></i> 555-123-4567</li>
-                        <li class="flex items-center gap-2"><i class="fas fa-envelope w-4 text-indigo-400"></i> info@bibliotecaabierta.org</li>
-                        <li class="flex items-center gap-2"><i class="fab fa-twitter w-4 text-indigo-400"></i> @biblio_abierta</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-envelope w-4 text-indigo-400"></i> info@bookland.org</li>
+                        <li class="flex items-center gap-2"><i class="fab fa-twitter w-4 text-indigo-400"></i> @bookland</li>
                     </ul>
                 </div>
                 <!-- Col 4: newsletter ficticio -->

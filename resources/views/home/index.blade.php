@@ -8,7 +8,7 @@
         Gestión de Libros
     </h1>
     <div class="bg-white px-4 py-2 rounded-full shadow-sm text-sm text-gray-600 border">
-        <i class="far fa-calendar-alt mr-2"></i> 15 de febrero, 2026
+        <i class="far fa-calendar-alt mr-2"></i> {{ \Carbon\Carbon::now()->locale('es')->isoFormat('LL') }}
     </div>
 </div>
 
@@ -17,18 +17,30 @@
     <article class="bg-white rounded-2xl shadow-sm p-5 border-l-4 border-indigo-500 flex justify-between items-center hover:shadow transition">
         <div>
             <p class="text-sm text-gray-500 uppercase tracking-wider">Total de libros</p>
-            <p class="text-3xl font-bold text-gray-800">5</p>
-            <p class="text-xs text-green-600 mt-1"><i class="fas fa-arrow-up"></i> 5.2% desde el mes pasado</p>
+            <p class="text-3xl font-bold text-gray-800">{{ $totalLibros }}</p>
+            <!-- <p class="text-xs text-green-600 mt-1"><i class="fas fa-arrow-up"></i> 5.2% desde el mes pasado</p> -->
         </div>
+        
         <div class="h-12 w-12 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-600 text-xl">
             <i class="fas fa-book"></i>
         </div>
     </article>
+   <article class="bg-white rounded-2xl shadow-sm p-5 border-l-4 border-purple-500 flex justify-between items-center hover:shadow transition">
+    <div>
+        <p class="text-sm text-gray-500 uppercase tracking-wider">Total de Categorias</p>
+        <p class="text-3xl font-bold text-gray-800">{{ $totalCategorias }}</p>
+        <!-- <p class="text-xs text-green-600 mt-1"><i class="fas fa-arrow-up"></i> 5.2% desde el mes pasado</p> -->
+    </div>
+    
+    <div class="h-12 w-12 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 text-xl">
+        <i class="fas fa-tags"></i>
+    </div>
+</article>
     <article class="bg-white rounded-2xl shadow-sm p-5 border-l-4 border-amber-500 flex justify-between items-center hover:shadow transition">
         <div>
             <p class="text-sm text-gray-500 uppercase tracking-wider">Libros prestados</p>
-            <p class="text-3xl font-bold text-gray-800"> 1 </p>
-            <p class="text-xs text-red-600 mt-1"><i class="fas fa-arrow-down"></i> 2.1% desde el mes pasado</p>
+            <p class="text-3xl font-bold text-gray-800"> {{ $libros_prestados }} </p>
+            <!-- <p class="text-xs text-red-600 mt-1"><i class="fas fa-arrow-down"></i> 2.1% desde el mes pasado</p> -->
         </div>
         <div class="h-12 w-12 bg-amber-100 rounded-full flex items-center justify-center text-amber-600 text-xl">
             <i class="fas fa-hand-holding-heart"></i>
@@ -36,9 +48,9 @@
     </article>
     <article class="bg-white rounded-2xl shadow-sm p-5 border-l-4 border-emerald-500 flex justify-between items-center hover:shadow transition">
         <div>
-            <p class="text-sm text-gray-500 uppercase tracking-wider">Usuarios activos</p>
-            <p class="text-3xl font-bold text-gray-800">3</p>
-            <p class="text-xs text-green-600 mt-1"><i class="fas fa-arrow-up"></i> 12.7% desde el mes pasado</p>
+            <p class="text-sm text-gray-500 uppercase tracking-wider">Total de Usuarios</p>
+            <p class="text-3xl font-bold text-gray-800">{{ $total_usuarios }}</p>
+            <!-- <p class="text-xs text-green-600 mt-1"><i class="fas fa-arrow-up"></i> 12.7% desde el mes pasado</p> -->
         </div>
         <div class="h-12 w-12 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600 text-xl">
             <i class="fas fa-users"></i>
@@ -47,8 +59,8 @@
     <article class="bg-white rounded-2xl shadow-sm p-5 border-l-4 border-rose-500 flex justify-between items-center hover:shadow transition">
         <div>
             <p class="text-sm text-gray-500 uppercase tracking-wider">Devoluciones pendientes</p>
-            <p class="text-3xl font-bold text-gray-800">1</p>
-            <p class="text-xs text-green-600 mt-1"><i class="fas fa-arrow-up"></i> 3.4% desde ayer</p>
+            <p class="text-3xl font-bold text-gray-800">{{ $devoluciones_pendientes }}</p>
+            <!-- <p class="text-xs text-green-600 mt-1"><i class="fas fa-arrow-up"></i> 3.4% desde ayer</p> -->
         </div>
         <div class="h-12 w-12 bg-rose-100 rounded-full flex items-center justify-center text-rose-600 text-xl">
             <i class="fas fa-clock"></i>

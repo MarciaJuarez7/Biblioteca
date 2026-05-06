@@ -62,8 +62,8 @@
                 <div class="flex items-center space-x-3">
                     <div class="h-10 w-10 rounded-full bg-indigo-200 flex items-center justify-center text-indigo-700 font-bold text-lg">{{ substr(auth()->user()->name, 0, 1) }}</div>
                     <div>
-                        <p class="font-medium text-gray-800">{{ auth()->user()->name }}</p>
-                        <p class="text-xs text-gray-500">{{ auth()->user()->email }}</p>
+                        <p class="font-medium text-gray-800"><a href="{{ route('usuarios.profile') }}">{{ auth()->user()->name }}</a></p>
+                        <p class="text-xs text-gray-500">{{ auth()->user()->email }} </p>
                     </div>
                 </div>
             </div>

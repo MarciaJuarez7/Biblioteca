@@ -35,7 +35,7 @@ class AuthController extends Controller
         // 3. Iniciar sesión
         auth()->login($user);
 
-        Mail::to($user->email)->send(new UsuarioRegistrado($user));
+        Mail::to($user->email)->queue(new UsuarioRegistrado($user));
 
         // 3.2 Redirigir con mensaje de éxito
         return redirect()->route('home')->with('success', '¡Registro exitoso!');
